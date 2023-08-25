@@ -4,7 +4,6 @@ namespace Thojou\PromptTemplate;
 
 class PromptTemplate implements PromptTemplateInterface
 {
-
     public function __construct(
         private readonly string $template,
         private readonly array $parameters = []

@@ -8,7 +8,6 @@ use Thojou\PromptTemplate\PromptInterface;
 
 class PromptTest extends TestCase
 {
-
     public function testPrompt()
     {
         $prompt = new Prompt('Hello World!');
