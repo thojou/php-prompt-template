@@ -40,6 +40,9 @@
             "@phpstan",
             "@test:coverage"
         ],
+        "fix": [
+            "@cs-fixer:fix"
+        ],
         "cs-fixer:check": "php-cs-fixer fix --dry-run --diff -v",
         "cs-fixer:fix": "php-cs-fixer fix --diff -v",
         "phpstan": "phpstan analyse --memory-limit=1G",
