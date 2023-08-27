@@ -6,8 +6,10 @@
 [![License](https://img.shields.io/github/license/thojou/php-prompt-template)](./LICENSE)
 
 
-The **PHP Prompt Template** is template library for PHP projects. 
-It provides a basic structure for PHP libraries, including a CI pipeline, code coverage, and static analysis. 
+The **PHP Prompt Template** is a library designed to simplify dynamic text generation in AI projects.
+This library empowers you to effortlessly incorporate placeholders into your text and render them with dynamic values.
+Thanks to [yethee/tiktoken-php](https://github.com/yethee/tiktoken-php), this library also provides a straightforward
+way to count and retrieve the tokens of a prompt.
 
 ## Requirements
 * PHP version >= 8.1
