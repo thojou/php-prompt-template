@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Thojou\PromptTemplate\Tests;
 
 use InvalidArgumentException;
@@ -9,15 +11,19 @@ use Thojou\PromptTemplate\PromptTemplate;
 class PromptTemplateTest extends TestCase
 {
     /**
+     * @param array<string, scalar> $params
      * @dataProvider providePromptTemplateData
      */
-    public function testPromptTemplate(string $template, array $params, string $expected)
+    public function testPromptTemplate(string $template, array $params, string $expected): void
     {
         $promptTemplate = new PromptTemplate($template);
         $this->assertEquals($expected, $promptTemplate->render($params));
         $this->assertEquals($template, $promptTemplate);
     }
 
+    /**
+     * @return array<string, array<int, array<string, scalar>|string>>
+     */
     public static function providePromptTemplateData(): array
     {
         return [
@@ -33,24 +39,25 @@ class PromptTemplateTest extends TestCase
         ];
     }
 
-    public function testNonStrictRendering()
+    public function testNonStrictRendering(): void
     {
         $promptTemplate = new PromptTemplate("Hello {{name}}!");
         $this->assertEquals("Hello {{name}}!", $promptTemplate->render([], false));
     }
 
-    public function testWithDefaultParameters()
+    public function testWithDefaultParameters(): void
     {
         $promptTemplate = new PromptTemplate("Hello {{name}}! Today is {{ day }}.", ['day' => 'Monday', 'name' => 'John']);
         $this->assertEquals("Hello Jane! Today is Monday.", $promptTemplate->render(['name' => 'Jane']));
     }
 
-    public function testInvalidParameterType()
+    public function testInvalidParameterType(): void
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Parameter "name" must be a scalar value, "array" given.');
 
         $promptTemplate = new PromptTemplate("Hello {{name}}!");
-        $promptTemplate->render(['name' => []]);
+
+        $promptTemplate->render(['name' => []]); // @phpstan-ignore-line
     }
 }

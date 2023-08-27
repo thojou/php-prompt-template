@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Thojou\PromptTemplate\Tests;
 
 use PHPUnit\Framework\TestCase;
@@ -8,7 +10,7 @@ use Thojou\PromptTemplate\PromptInterface;
 
 class PromptTest extends TestCase
 {
-    public function testPrompt()
+    public function testPrompt(): void
     {
         $prompt = new Prompt('Hello World!');
 
