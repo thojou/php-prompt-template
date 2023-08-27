@@ -16,7 +16,7 @@ way to count and retrieve the tokens of a prompt.
 
 ## Installation
 
-You can effortlessly install the **OpenAi PHP Client** using the popular package manager [composer](https://getcomposer.org/) to install OpenAi PHP Client.
+You can effortlessly install the **PHP Prompt Template** using the popular package manager [composer](https://getcomposer.org/).
 
 ```bash
 composer require thojou/php-prompt-template
