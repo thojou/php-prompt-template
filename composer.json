@@ -1,5 +1,5 @@
 {
-    "name": "thojou/php-prompt-template",
+    "name": "thojou/prompt-template",
     "description": "PHP library for creating AI interaction prompts.",
     "type": "library",
     "keywords": ["library", "prompt", "AI", "interaction"],
