@@ -15,6 +15,9 @@ namespace Thojou\PromptTemplate;
 
 use InvalidArgumentException;
 
+use function is_array;
+use function join;
+
 /**
  * Represents a template for rendering prompts with placeholders.
  */
@@ -23,12 +26,14 @@ class PromptTemplate implements PromptTemplateInterface
     /**
      * PromptTemplate constructor.
      *
-     * @param string                $template   The template string containing placeholders.
+     * @param string|array<string>  $template   The template string containing placeholders.
      * @param array<string, scalar> $parameters Optional initial parameters for the template.
+     * @param string                $joinToken  The token to join the template if $template is an array
      */
     public function __construct(
-        private readonly string $template,
-        private readonly array $parameters = []
+        private readonly string|array $template,
+        private readonly array $parameters = [],
+        private readonly string $joinToken = "\n"
     ) {
     }
 
@@ -43,7 +48,7 @@ class PromptTemplate implements PromptTemplateInterface
      */
     public function render(array $parameters = [], bool $strict = true): PromptInterface
     {
-        $template = $this->template;
+        $template = (string)$this;
         $parameters = array_merge($this->parameters, $parameters);
 
         foreach ($parameters as $name => $value) {
@@ -76,7 +81,7 @@ class PromptTemplate implements PromptTemplateInterface
      */
     public function __toString(): string
     {
-        return $this->template;
+        return is_array($this->template) ? join($this->joinToken, $this->template) : $this->template;
     }
 
     /**

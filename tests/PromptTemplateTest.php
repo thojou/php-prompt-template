@@ -48,6 +48,14 @@ class PromptTemplateTest extends TestCase
         ];
     }
 
+
+    public function testArrayRendering(): void
+    {
+        $promptTemplate = new PromptTemplate(["Hello User!", "How are you doing?"]);
+        $this->assertEquals("Hello User!\nHow are you doing?", $promptTemplate->render([], false));
+    }
+
+
     public function testNonStrictRendering(): void
     {
         $promptTemplate = new PromptTemplate("Hello {{name}}!");
